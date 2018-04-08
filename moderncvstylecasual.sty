@@ -67,7 +67,7 @@
 %                resume style definition
 %-------------------------------------------------------------------------------
 % fonts
-\renewcommand*{\namefont}{\fontsize{38}{40}\mdseries\upshape}
+\renewcommand*{\namefont}{\fontsize{25}{15}\mdseries\upshape}
 \renewcommand*{\addressfont}{\normalsize\mdseries\slshape}
 
 % commands
@@ -86,15 +86,20 @@
        \ifdim\@photoframewidth=0pt%
          \setlength{\fboxsep}{0pt}\fi%
        {\color{color1}\framebox{\includegraphics[width=\@photowidth]{\@photo}}}}}%
+  \flushright
   \usebox{\makecvtitlepicturebox}%
   % name
   \@initializelength{\makecvtitlepicturewidth}%
   \settowidth{\makecvtitlepicturewidth}{\usebox{\makecvtitlepicturebox}}%
+  \@initializelength{\makecvtitlepictureheight}%
+  \settoheight{\makecvtitlepictureheight}{\usebox{\makecvtitlepicturebox}}%
+  \vspace{-\makecvtitlepictureheight}
+  \flushleft
   \parbox[b]{\textwidth-\makecvtitlepicturewidth}{%
-    \raggedleft\namefont{\color{color2!50}\@firstname} {\color{color2}\@familyname}}\\[-.35em]% alternate design: \MakeLowercase and no space
-  {\color{color2!50}\rule{\textwidth}{.25ex}}%
+    \raggedright\namefont{\color{color2!50}\@firstname} {\color{color2}\@familyname}}\\[-.35em]% alternate design: \MakeLowercase and no space
+  {\color{color2!50}\rule{\textwidth - \makecvtitlepicturewidth - \fboxsep}{.25ex}}%
   % optional title
-  \ifthenelse{\equal{\@title}{}}{}{\\[1.25em]\null\hfill\titlestyle{\@title}}\\[2.5em]% \null is required as there is no box on the line after \\, so glue (and leaders) disappears; this is in contrast to after \par, where the next line starts with an indent box (even after \noindent).
+  \ifthenelse{\equal{\@title}{}}{}{\\[1.25em]\titlestyle{\@title}}\\[2.5em]
   % optional quote
   \ifthenelse{\isundefined{\@quote}}%
     {}%
