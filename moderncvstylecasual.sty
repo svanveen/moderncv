@@ -176,7 +176,10 @@
   \pagestyle{plain}}
 
 \renewcommand*{\makeletterclosing}{
-  \@closing\\[3em]%
+  \@closing
+  \ifthenelse{\isundefined{\@signature}}
+  {\\[3em]}
+  {\\[1em]\includegraphics[width=\@signaturewidth]{\@signature}\\[0.2em]}
   {\bfseries\@firstname~\@familyname}%
   \ifthenelse{\isundefined{\@enclosure}}{}{%
     \\%
