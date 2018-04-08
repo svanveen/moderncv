@@ -406,6 +406,7 @@
 % defines one's picture (optional)
 % usage: photo[<picture width>][<picture frame thickness>]{<picture filename>}
 \NewDocumentCommand{\photo}{O{64pt}O{0.4pt}m}{\def\@photowidth{#1}\def\@photoframewidth{#2}\def\@photo{#3}}
+\NewDocumentCommand{\signature}{O{64pt}m}{\def\@signaturewidth{#1}\def\@signature{#2}}
 \newcommand*{\quote}[1]{\def\@quote{#1}}
 
 % fonts
